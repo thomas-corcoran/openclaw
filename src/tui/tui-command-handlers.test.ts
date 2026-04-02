@@ -188,7 +188,7 @@ describe("tui command handlers", () => {
 
   it("reports send failures and marks activity status as error", async () => {
     const setActivityStatus = vi.fn();
-    const { handleCommand, addSystem, dropPendingUser, state } = createHarness({
+    const { handleCommand, addSystem, dropPendingUser } = createHarness({
       sendChat: vi.fn().mockRejectedValue(new Error("gateway down")),
       setActivityStatus,
     });
