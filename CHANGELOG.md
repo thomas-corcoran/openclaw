@@ -89,6 +89,7 @@ Docs: https://docs.openclaw.ai
 - Cron/exec timeouts: surface timed-out `exec` and `bash` failures in isolated cron runs even when `verbose: off`, including custom session-target cron jobs, so scheduled runs stop failing silently. (#58247) Thanks @skainguyen1412.
 - Telegram/exec approvals: fall back to the origin session key for async approval followups and keep resume-failure status delivery sanitized so Telegram followups still land without leaking raw exec metadata. (#59351) Thanks @seonang.
 - Node-host/exec approvals: bind `pnpm dlx` invocations through the approval planner's mutable-script path so the effective runtime command is resolved for approval instead of being left unbound. (#58374)
+- TUI/chat: keep queued sends visible with a `pending N` status, preserve busy-state visibility across fallback/error transitions, expose `/verbose full`, and reclaim width for long links and paths. (#59800) Thanks @vincentkoc.
 
 ## 2026.4.2
 
