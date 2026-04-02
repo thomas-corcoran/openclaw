@@ -37,7 +37,6 @@ function createHarness(params?: {
   const state = {
     currentSessionKey: "agent:main:main",
     activeChatRunId: params?.activeChatRunId ?? null,
-    pendingOptimisticUserMessage: false,
     isConnected: params?.isConnected ?? true,
     sessionInfo: {},
   };
@@ -140,7 +139,6 @@ describe("tui command handlers", () => {
 
     expect(noteLocalRunId).toHaveBeenCalledTimes(1);
     expect(state.activeChatRunId).toBeNull();
-    expect(state.pendingOptimisticUserMessage).toBe(false);
   });
 
   it("sends /btw without hijacking the active main run", async () => {
@@ -200,7 +198,6 @@ describe("tui command handlers", () => {
     expect(dropPendingUser).toHaveBeenCalledTimes(1);
     expect(addSystem).toHaveBeenCalledWith("send failed: Error: gateway down");
     expect(setActivityStatus).toHaveBeenLastCalledWith("error");
-    expect(state.pendingOptimisticUserMessage).toBe(false);
   });
 
   it("sanitizes control sequences in /new and /reset failures", async () => {
